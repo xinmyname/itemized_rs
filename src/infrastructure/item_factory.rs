@@ -6,7 +6,7 @@ pub struct ItemFactory {
 
 impl ItemFactory {
     pub fn make_item(&self) -> Item {
-        return Item{}
+        return Item::new()
     }
 
 }

@@ -1,6 +1,3 @@
-#[macro_use]
-extern crate lazy_static;
-
 use std::env;
 
 mod infrastructure;
@@ -13,8 +10,6 @@ use models::descriptor;
 fn main() {
 
     let mut count = 1;
-
-    let ref defaultDescriptor = descriptor::DEFAULT;
 
     let args: Vec<String> = env::args().collect();
 

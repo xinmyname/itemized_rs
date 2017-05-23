@@ -1,16 +1,19 @@
+use std::collections::HashMap;
 use models::item::Item;
+use models::descriptor::Descriptor;
+use models::slot::Slot;
 
 pub struct Inventory {
-
+    slots: HashMap<Descriptor,Slot>
 }
 
 impl Inventory {
     pub fn new() -> Inventory {
-        return Inventory{}
+        return Inventory { slots: HashMap::new() }
     }
 
     pub fn add_item(&self, item: Item) {
-
+        
     }
 }
 
