@@ -1,3 +1,10 @@
+mod models;
+
+use models::item::*;
+
 fn main() {
-    println!("Hello, world!");
+
+    let item = Item {};
+
+    println!("Hello {}", item);
 }
