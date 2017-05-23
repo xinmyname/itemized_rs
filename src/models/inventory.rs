@@ -4,7 +4,7 @@ use models::descriptor::Descriptor;
 use models::slot::Slot;
 
 pub struct Inventory {
-    slots: HashMap<Descriptor,Slot>
+    slots: HashMap<&'static Descriptor,Slot>
 }
 
 impl Inventory {
@@ -14,6 +14,11 @@ impl Inventory {
 
     pub fn add_item(&self, item: Item) {
         
+        if self.slots.contains_key(item.descriptor) {
+            panic!("Yes, it's there.");
+        } else {
+            self.slots.insert(item.descriptor, Slot {} )
+        }
     }
 }
 
