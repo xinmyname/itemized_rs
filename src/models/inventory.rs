@@ -1,8 +1,8 @@
 use std::collections::HashMap;
 use std::iter::FromIterator;
-use models::item::Item;
-use models::descriptor::Descriptor;
-use models::slot::Slot;
+use models::Item;
+use models::Descriptor;
+use models::Slot;
 
 pub struct Inventory {
     slots: HashMap<&'static Descriptor,Slot>
@@ -15,11 +15,15 @@ impl Inventory {
 
     pub fn add_item(&mut self, item: Item) {
         
-        if self.slots.contains_key(item.descriptor) {
-            panic!("Yes, it's there.");
+        let descriptor = item.descriptor;
+
+        if self.slots.contains_key(descriptor) {
+
+            let slot = self.slots.get_mut(descriptor).unwrap();
+            slot.quantity += 1;
+            
         } else {
-            let slot = Slot{};
-            self.slots.insert(item.descriptor, slot );
+            self.slots.insert(descriptor, Slot::new(item));
         }
     }
 

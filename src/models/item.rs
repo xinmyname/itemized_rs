@@ -1,15 +1,15 @@
 use std::fmt;
-use models::descriptor::Descriptor;
+use models::Descriptor;
 
 pub struct Item {
     pub descriptor: &'static Descriptor
 }
 
-static defaultDescriptor:Descriptor = Descriptor{};
+static DEFAULT_DESCRIPTOR:Descriptor = Descriptor{};
 
 impl Item {
     pub fn new() -> Item {
-        return Item { descriptor: &defaultDescriptor }
+        return Item { descriptor: &DEFAULT_DESCRIPTOR }
     }
 }
 

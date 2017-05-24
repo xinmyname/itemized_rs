@@ -15,7 +15,7 @@ fn main() {
     if args.len() >= 2 {
         
         match args[1].parse() {
-            Ok(newCount) => count = newCount,
+            Ok(new_count) => count = new_count,
             _ => panic!("Invalid count.")
         }
     }
@@ -28,5 +28,7 @@ fn main() {
         count -= 1;
     }
 
-    println!("{} items", count);
+    for slot in inventory.slots() {
+        println!("{}", slot);
+    }
 }
