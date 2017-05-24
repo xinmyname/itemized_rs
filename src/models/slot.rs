@@ -3,20 +3,23 @@ use models::Item;
 
 pub struct Slot {
     pub quantity: i32,
-    pub item:Item
+    pub item: Item,
 }
 
 impl Slot {
-    pub fn new(item:Item) -> Slot {
-        Slot { quantity: 1, item: item }
+    pub fn new(item: Item) -> Slot {
+        Slot {
+            quantity: 1,
+            item: item,
+        }
     }
 }
 
 impl fmt::Display for Slot {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 
-        let text = if self.quantity == 1 { 
-            format!("{}", self.item) 
+        let text = if self.quantity == 1 {
+            format!("{}", self.item)
         } else {
             format!("{}s", self.item)
         };
@@ -34,7 +37,7 @@ impl fmt::Display for Slot {
             7 => "Seven",
             8 => "Eight",
             9 => "Nine",
-            _ => &default_quantity_text
+            _ => &default_quantity_text,
         };
 
         return write!(f, "{} {}", quantity_text, text);

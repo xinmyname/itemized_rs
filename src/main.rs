@@ -13,14 +13,14 @@ fn main() {
     let args: Vec<String> = env::args().collect();
 
     if args.len() >= 2 {
-        
+
         match args[1].parse() {
             Ok(arg_count) => count = arg_count,
-            _ => panic!("Invalid count.")
+            _ => panic!("Invalid count."),
         }
     }
 
-    let item_factory = ItemFactory{};
+    let item_factory = ItemFactory {};
     let mut inventory = Inventory::new();
 
     while count > 0 {

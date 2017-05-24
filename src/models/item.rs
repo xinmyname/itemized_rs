@@ -2,10 +2,10 @@ use std::fmt;
 use models::Descriptor;
 
 pub struct Item {
-    pub descriptor: &'static Descriptor
+    pub descriptor: &'static Descriptor,
 }
 
-static DEFAULT_DESCRIPTOR:Descriptor = Descriptor{};
+static DEFAULT_DESCRIPTOR: Descriptor = Descriptor {};
 
 impl Item {
     pub fn new() -> Item {
