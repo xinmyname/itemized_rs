@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::iter::FromIterator;
 use models::item::Item;
 use models::descriptor::Descriptor;
 use models::slot::Slot;
@@ -20,6 +21,10 @@ impl Inventory {
             let slot = Slot{};
             self.slots.insert(item.descriptor, slot );
         }
+    }
+
+    pub fn slots<'a>(&'a self) -> Vec<&'a Slot> {
+        return Vec::from_iter(self.slots.values());
     }
 }
 
