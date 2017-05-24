@@ -21,18 +21,20 @@ impl fmt::Display for Slot {
             format!("{}s", self.item)
         };
 
+        let default_quantity_text = self.quantity.to_string();
+
         let quantity_text = match self.quantity {
-            1 => "An".to_string(),
-            0 => "No".to_string(),
-            2 => "Two".to_string(),
-            3 => "Three".to_string(),
-            4 => "Four".to_string(),
-            5 => "Five".to_string(),
-            6 => "Six".to_string(),
-            7 => "Seven".to_string(),
-            8 => "Eight".to_string(),
-            9 => "Nine".to_string(),
-            _ => self.quantity.to_string()
+            1 => "An",
+            0 => "No",
+            2 => "Two",
+            3 => "Three",
+            4 => "Four",
+            5 => "Five",
+            6 => "Six",
+            7 => "Seven",
+            8 => "Eight",
+            9 => "Nine",
+            _ => &default_quantity_text
         };
 
         return write!(f, "{} {}", quantity_text, text);
