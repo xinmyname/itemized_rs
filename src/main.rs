@@ -22,7 +22,7 @@ fn main() {
     }
 
     let item_factory = ItemFactory{};
-    let inventory = Inventory::new();
+    let mut inventory = Inventory::new();
 
     while count > 0 {
         inventory.add_item(item_factory.make_item());

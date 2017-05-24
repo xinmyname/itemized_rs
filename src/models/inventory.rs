@@ -12,12 +12,13 @@ impl Inventory {
         return Inventory { slots: HashMap::new() }
     }
 
-    pub fn add_item(&self, item: Item) {
+    pub fn add_item(&mut self, item: Item) {
         
         if self.slots.contains_key(item.descriptor) {
             panic!("Yes, it's there.");
         } else {
-            self.slots.insert(item.descriptor, Slot {} )
+            let slot = Slot{};
+            self.slots.insert(item.descriptor, slot );
         }
     }
 }
