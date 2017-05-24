@@ -15,7 +15,7 @@ fn main() {
     if args.len() >= 2 {
         
         match args[1].parse() {
-            Ok(new_count) => count = new_count,
+            Ok(arg_count) => count = arg_count,
             _ => panic!("Invalid count.")
         }
     }

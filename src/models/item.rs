@@ -9,7 +9,7 @@ static DEFAULT_DESCRIPTOR:Descriptor = Descriptor{};
 
 impl Item {
     pub fn new() -> Item {
-        return Item { descriptor: &DEFAULT_DESCRIPTOR }
+        Item { descriptor: &DEFAULT_DESCRIPTOR }
     }
 }
 

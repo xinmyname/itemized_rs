@@ -28,7 +28,7 @@ impl Inventory {
     }
 
     pub fn slots<'a>(&'a self) -> Vec<&'a Slot> {
-        return Vec::from_iter(self.slots.values());
+        Vec::from_iter(self.slots.values())
     }
 }
 
