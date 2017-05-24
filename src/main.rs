@@ -3,9 +3,8 @@ use std::env;
 mod infrastructure;
 mod models;
 
-use infrastructure::item_factory::ItemFactory;
-use models::inventory::Inventory;
-use models::descriptor;
+use infrastructure::ItemFactory;
+use models::Inventory;
 
 fn main() {
 

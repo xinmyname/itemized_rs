@@ -1,4 +1,4 @@
-use models::item::Item;
+use models::Item;
 
 pub struct ItemFactory {
 
