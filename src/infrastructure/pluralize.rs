@@ -1,7 +1,8 @@
-pub fn plural_of(word: &str, count: i32) -> String {
+pub fn plural_of<S: Into<String>>(word: S, count: i32) -> String {
 
     if count == 1 {
-        return format!("{}s", word);
+        return word.into();
     }
-    return "items".to_string();
+    
+    return format!("{}s", word.into());
 }

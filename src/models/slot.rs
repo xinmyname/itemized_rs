@@ -19,7 +19,7 @@ impl Slot {
 impl fmt::Display for Slot {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 
-        let text = plural_of(&self.item.to_string(), self.quantity);
+        let text = plural_of(self.item.to_string(), self.quantity);
         let default_quantity_text = self.quantity.to_string();
 
         let quantity_text = match self.quantity {
