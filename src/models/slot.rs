@@ -1,5 +1,6 @@
 use std::fmt;
 use models::Item;
+use infrastructure::plural_of;
 
 pub struct Slot {
     pub quantity: i32,
@@ -18,12 +19,7 @@ impl Slot {
 impl fmt::Display for Slot {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
 
-        let text = if self.quantity == 1 {
-            format!("{}", self.item)
-        } else {
-            format!("{}s", self.item)
-        };
-
+        let text = plural_of(&self.item.to_string(), self.quantity);
         let default_quantity_text = self.quantity.to_string();
 
         let quantity_text = match self.quantity {

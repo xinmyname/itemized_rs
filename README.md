@@ -33,3 +33,11 @@ You have:
 ## Notes
 Modules and lifetimes were a little weird, but pretty nice all around!
  
+## The Good Parts
+- No runtime
+- Compiles to native executable
+- Very easy builds
+
+## Airing of Grievances
+- Lifetimes are a little weird
+- Piecing together intra-package modules is more difficult than it should be
