@@ -1,3 +1,5 @@
+extern crate regex;
+
 use std::env;
 
 mod infrastructure;

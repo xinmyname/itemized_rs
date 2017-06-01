@@ -41,3 +41,5 @@ Modules and lifetimes were a little weird, but pretty nice all around!
 ## Airing of Grievances
 - Lifetimes are a little weird
 - Piecing together intra-package modules is more difficult than it should be
+- String handling due to &str and String is ... not great
+- Good Lord, &word.into().as_ref() - WTAF?
