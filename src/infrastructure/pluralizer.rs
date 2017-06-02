@@ -1,4 +1,5 @@
 use regex::Regex;
+use std::sync::Mutex;
 
 pub struct Pluralizer {
     uncountables: Vec<&'static str>,
@@ -44,49 +45,49 @@ impl Pluralizer {
                 "understanding", "unemployment", "unity", "validity", "veal", "vengeance",
                 "violence"),
             rules: vec!(
-                ("(th)is$", "$1ese"),
-                ("(th)at$", "$1ose"),
-                ("(millen)ium$", "$1ia"),
-                ("(l)eaf$", "$1eaves"),
-                ("(r)oof$", "$1oofs"),
-                ("(gen)us$", "$1era"),
-                ("(embarg)o$", "$1oes"),
+                ("(th)is$", "${1}ese"),
+                ("(th)at$", "${1}ose"),
+                ("(millen)ium$", "${1}ia"),
+                ("(l)eaf$", "${1}eaves"),
+                ("(r)oof$", "${1}oofs"),
+                ("(gen)us$", "${1}era"),
+                ("(embarg)o$", "${1}oes"),
                 ("arf$", "arves"),
-                ("^(b|tabl)eau$", "$1eaux"),
-                ("^(append|matr)ix$", "$1ices"),
-                ("^(ind)ex$", "$1ices"),
-                ("^(a)pparatus$", "$1pparatuses"),
-                ("^(a)lumna$", "$1lumnae"),
-                ("^(alg|vertebr|vit)a$", "$1ae"),
-                ("^(d)ie$", "$1ice"),
-                ("(m|l)ouse$", "$1ice"),
-                ("^(p)erson$", "$1eople"),
-                ("^(o)x$", "$1xen"),
-                ("^(c)hild$", "$1hildren"),
-                ("(g)oose$", "$1eese"),
-                ("(t)ooth$", "$1eeth"),
+                ("^(b|tabl)eau$", "${1}eaux"),
+                ("^(append|matr)ix$", "${1}ices"),
+                ("^(ind)ex$", "${1}ices"),
+                ("^(a)pparatus$", "${1}pparatuses"),
+                ("^(a)lumna$", "${1}lumnae"),
+                ("^(alg|vertebr|vit)a$", "${1}ae"),
+                ("^(d)ie$", "${1}ice"),
+                ("(m|l)ouse$", "${1}ice"),
+                ("^(p)erson$", "${1}eople"),
+                ("^(o)x$", "${1}xen"),
+                ("^(c)hild$", "${1}hildren"),
+                ("(g)oose$", "${1}eese"),
+                ("(t)ooth$", "${1}eeth"),
                 ("lf$", "lves"),
-                ("(f)oot$", "$1eet"),
-                ("^(wo|work|fire)man$", "$1men"),
-                ("(potat|tomat|volcan)o$", "$1oes"),
-                ("(criteri|phenomen)on$", "$1a"),
-                ("(nebul)a", "$1ae"),
+                ("(f)oot$", "${1}eet"),
+                ("^(wo|work|fire)man$", "${1}men"),
+                ("(potat|tomat|volcan)o$", "${1}oes"),
+                ("(criteri|phenomen)on$", "${1}a"),
+                ("(nebul)a", "${1}ae"),
                 ("oof$", "ooves"),
                 ("ium$", "ia"),
                 ("um$", "a"),
                 ("oaf$", "oaves"),
-                ("(thie)f$", "$1ves"),
+                ("(thie)f$", "${1}ves"),
                 ("fe$", "ves"),
-                ("(buffal|carg|mosquit|torped|zer|vet|her|ech)o$", "$1oes"),
+                ("(buffal|carg|mosquit|torped|zer|vet|her|ech)o$", "${1}oes"),
                 ("o$", "os"),
                 ("ch$", "ches"),
                 ("sis$", "ses"),
-                ("(corp)us$", "$1ora"),
-                ("(cact|nucle|alumn|bacill|fung|radi|stimul|syllab)us$", "$1i"),
-                ("(ax)is", "$1es"),
-                ("(sh|zz|ss)$", "$1es"),
+                ("(corp)us$", "${1}ora"),
+                ("(cact|nucle|alumn|bacill|fung|radi|stimul|syllab)us$", "${1}i"),
+                ("(ax)is", "${1}es"),
+                ("(sh|zz|ss)$", "${1}es"),
                 ("x$", "xes"),
-                ("(t|r|l|b)y$", "$1ies"),
+                ("(t|r|l|b)y$", "${1}ies"),
                 ("s$", "ses"),
                 ("$", "s"))
         }
@@ -120,4 +121,12 @@ impl Pluralizer {
 
         return word;
     }
+}
+
+lazy_static! {
+    static ref DEFAULT: Mutex<Pluralizer> = Mutex::new(Pluralizer::new());
+}
+
+pub fn plural_of<S:Into<String>>(word:S, count:i32) -> String {
+    return DEFAULT.lock().unwrap().plural_of(word, count);
 }

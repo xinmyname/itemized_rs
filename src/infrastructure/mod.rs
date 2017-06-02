@@ -1,5 +1,6 @@
 mod item_factory;
 pub use self::item_factory::ItemFactory;
 
-mod pluralize;
-pub use self::pluralize::Pluralizer;
+mod pluralizer;
+pub use self::pluralizer::Pluralizer;
+pub use self::pluralizer::plural_of;
