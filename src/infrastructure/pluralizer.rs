@@ -87,7 +87,7 @@ impl Pluralizer {
                 ("(ax)is", "${1}es"),
                 ("(sh|zz|ss)$", "${1}es"),
                 ("x$", "xes"),
-                ("(t|r|l|b)y$", "${1}ies"),
+                ("(t|sp|r|l|b)y$", "${1}ies"),
                 ("s$", "ses"),
                 ("$", "s"))
         }
