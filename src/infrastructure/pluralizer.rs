@@ -130,3 +130,13 @@ lazy_static! {
 pub fn plural_of<S:Into<String>>(word:S, count:i32) -> String {
     return DEFAULT.lock().unwrap().plural_of(word, count);
 }
+
+#[cfg(test)]
+mod the_plural_of {
+    use super::*;
+
+    #[test]
+    fn cat_is_cats() {
+        assert_eq!(plural_of("cat", 2), "cats");
+    }
+}
