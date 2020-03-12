@@ -1,3 +1,18 @@
+use crate::models;
+
+pub struct ItemFactory {}
+
+impl ItemFactory {
+
+    pub fn new() -> ItemFactory {
+        ItemFactory { }
+    }
+
+    pub fn make_item(&self) -> models::Item {
+        models::Item::new()
+    }
+}
+
 use regex::Regex;
 use std::sync::Mutex;
 

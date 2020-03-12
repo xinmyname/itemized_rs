@@ -24,7 +24,7 @@ fn main() {
         }
     }
 
-    let item_factory = ItemFactory {};
+    let item_factory = ItemFactory::new();
     let mut inventory = Inventory::new();
 
     while count > 0 {
