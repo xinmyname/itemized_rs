@@ -1,3 +1,6 @@
+use regex::Regex;
+use std::sync::Mutex;
+use lazy_static::lazy_static;
 use crate::models;
 
 pub struct ItemFactory {}
@@ -12,9 +15,6 @@ impl ItemFactory {
         models::Item::new()
     }
 }
-
-use regex::Regex;
-use std::sync::Mutex;
 
 pub struct Pluralizer {
     uncountables: Vec<&'static str>,

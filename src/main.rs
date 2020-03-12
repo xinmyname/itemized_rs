@@ -1,12 +1,7 @@
-#[macro_use]
-extern crate lazy_static;
-extern crate regex;
-
-use std::env;
-
 mod infrastructure;
 mod models;
 
+use std::env;
 use infrastructure::ItemFactory;
 use models::Inventory;
 

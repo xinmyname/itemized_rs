@@ -2,8 +2,7 @@ use std::collections::HashMap;
 use std::fmt;
 use std::iter::FromIterator;
 
-use infrastructure::plural_of;
-
+use crate::infrastructure::plural_of;
 
 #[derive(PartialEq, Eq, Hash)]
 pub struct Descriptor {}
